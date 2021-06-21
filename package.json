@@ -1,0 +1,21 @@
+{
+  "name": "lyre.io",
+  "version": "1.0.0",
+  "description": "A server for running an AI lyrics bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.hku.nl/Revess/lyre.io.git"
+  },
+  "author": "Bas Maat",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.4.0",
+    "express": "^4.17.1",
+    "node-osc": "^6.0.2",
+    "socketio": "^1.0.0"
+  }
+}
