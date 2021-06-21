@@ -7,7 +7,7 @@ const os = require('os');
 const osc = require('node-osc');
 
 var clients = {};
-var ip_address = '192.168.10.174';
+var ip_address = '192.168.10.201';
 var message_queue = [];
 var python = new osc.Client("127.0.0.1",5001);
 var receiver = new osc.Server(5002,"127.0.0.1", () => {

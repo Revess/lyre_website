@@ -1,14 +1,32 @@
 <!doctype html>
 <html>
   <head>
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"/>
+
+     <script src= "https://rawgit.com/outboxcraft/beauter/master/beauter.min.js"></script>
   <body>
-      <p>test</p>
-      <label for="fname">text:</label>
-      <input type="text" id="prompt" name="prompt", maxlength="12"><br><br>
-      <button type="button", onclick="generate_text()">Generate text!</button>
-      <p id="output">Here the output will be shown</p>
+  
+    <div class="jumbo _pink">
+      <h1>Lyre<small>.ai</small></h1>
+      <p>Private beta</p>
+      <p>Hee! Leuk dat je lyre wilt testen! </p>
+      <p><small>Prompt het model met 1 of twee zinnen:</small></p>
+      </div>
+
+      <div class="container _cream"style="min-height:350px">
+        <div class="off-4"><label for="fname">input:</label></div>
+        <div class="off-4"><input type="text" id="prompt" name="prompt", maxlength="100"><br><br></div>
+    
+      <div class="off-4"><button type="button" onclick="generate_text()">Generate text!</button></div>
+
+    </div>
+    <div class="container _nightblue"style="min-height:350px">
+      <div class="off-2"><p id="output">Here the output will be shown</p></div>
       <script src="/socket.io/socket.io.js"></script>
       <script src="index.js"></script>
+    </div>
+    </div>
   </body>
 </html>
