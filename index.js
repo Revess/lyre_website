@@ -4,20 +4,66 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const os = require('os');
+var session = require('express-session');
+var bodyParser = require('body-parser');
 const osc = require('node-osc');
 
 var clients = {};
 var receivers = {};
-var ip_address = '192.168.10.174';
+var ip_address = '127.0.0.1';
 var message_queue = [];
 var python = new osc.Client("127.0.0.1",5001);
 //43280
 
-http.listen(5003, function(){
-    console.log('listening on ' + ip_address + ':5003');
+http.listen(5000, function(){
+    console.log('listening on ' + ip_address + ':5000');
 });
 
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
+
+app.get('/', function(request, response) {
+	response.sendFile(path.join(__dirname + '/client/login_page/index.html'));
+});
+
+app.post('/auth', function(request, response) {
+	var username = request.body.username;
+	var password = request.body.password;
+	if (username && password) {
+        if (username == "admin" && password == "admin"){
+			request.session.loggedin = true;
+			request.session.username = username;
+			response.redirect('/home');
+			response.end();
+		} else {
+			response.send('Incorrect Username and/or Password!');
+			response.end();
+		}			
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
+
+app.get('/home', function(request, response) {
+	if (request.session.loggedin) {
+        console.log("loggedin")
+	    response.sendFile(path.join(__dirname + '/client/user_page/index.html'));
+        // app.use(express.static(path.join(__dirname, 'client/user_page/')));
+    } else {
+		response.send('Please login to view this page!');
+	}
+});
+
+app.get('/index.js', function(req, res) {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(__dirname + '/client/user_page/index.js');
+});
 
 io.sockets.setMaxListeners(0);
 
