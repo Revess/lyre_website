@@ -25,10 +25,9 @@ import threading as td
 from src import model, sample, encoder
 
 def default_handler(address, *args):
-    global raw_text
+    global queue
     if "input_string" in address:
-        raw_text = args
-        print(raw_text)
+        queue.append(args)
 
 def receiver():
     dispatcher = Dispatcher()
@@ -38,7 +37,7 @@ def receiver():
     server.serve_forever()  # Blocks forever
 
 def main_code():
-    global raw_text
+    global queue
     ##--------------Settings--------------##
     model_name="lyrics_model_v2_ckpt26"
     seed=None
@@ -48,7 +47,7 @@ def main_code():
     temperature=1.0
     top_k=40
     top_p=0.0
-    raw_text = ['','']
+    queue = []
     client = SimpleUDPClient("127.0.0.1", 5002)
 
     if batch_size is None:                                                                                              #Nshepperd, init the batch size
@@ -82,9 +81,10 @@ def main_code():
 
         print("ready")
         while(True):
-            if len(raw_text[0]) > 5:
-                ip_client = raw_text[1]
-                raw_text = raw_text[0]
+            if len(queue) > 0:
+                ip_client = queue[0][1]
+                raw_text = queue[0][0]
+                queue.pop(0)
                 print("processing")
                 while not raw_text:                                                                                         #Ignore if empty
                     break
@@ -101,17 +101,21 @@ def main_code():
                         text+="\n"
                     client.send_message("/output", [text,ip_client])
                 print("ready")
-                raw_text = ['','']
+                raw_text = ''
             t.sleep(1)
 
 def main():
     server = td.Thread(target=receiver)
-    mainc = td.Thread(target=main_code)
+    main1 = td.Thread(target=main_code)
+    # main2 = td.Thread(target=main_code)
     server.daemon = True
-    mainc.daemon = True
-    mainc.start()
+    main1.daemon = True
+    # main2.daemon = True
+    main1.start()
+    # main2.start()
     server.start()
-    mainc.join()
+    main1.join()
+    # main2.join()
     server.join()
 
     
