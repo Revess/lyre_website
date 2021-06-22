@@ -51,10 +51,9 @@ app.post('/auth', function(request, response) {
 });
 
 app.get('/home', function(request, response) {
+    // var input = request.body.prompt;
 	if (request.session.loggedin) {
-        console.log("loggedin")
-	    response.sendFile(path.join(__dirname + '/client/user_page/index.html'));
-        // app.use(express.static(path.join(__dirname, 'client/user_page/')));
+	    response.sendFile(path.join(__dirname + '/client/home/index.html'));
     } else {
 		response.send('Please login to view this page!');
 	}
