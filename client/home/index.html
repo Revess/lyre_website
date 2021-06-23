@@ -1,32 +1,73 @@
 <!doctype html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 	<link rel="stylesheet" type="text/css" href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"/>
 
+  </head>
      <script src= "https://rawgit.com/outboxcraft/beauter/master/beauter.min.js"></script>
   <body>
   
-    <div class="jumbo _pink">
+    <div class="zero">
+    <div class="jumbotron">
       <h1>Lyre<small>.ai</small></h1>
-      <p>Private beta</p>
-      <p>Hee! Leuk dat je lyre wilt testen! </p>
-      <p><small>Prompt het model met 1 of twee zinnen:</small></p>
+      <p>Private Demo</p>
+</div>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+      <h2>Hee! Leuk dat je Lyre wilt testen! </h2>
+      <p>Lyre is een gefinetunede versie van OpenAI's GPT2, getraind op korte verhalen en songteksten.</p>
+      <p><small>Lyre is een educatief project van afstudeerders van HKU Muziek en Technologie om te leren over werken en interacteren met AI modellen in creatieve context. Door eerdere tests met een oudere alpha-versie met drie producers is ontdekt dat er wellicht een rol in het creatieve proces is voor een suboptimaal getraind netwerk. Hiermee wordt de creativiteit van de maker mogelijk vergroot.  </small></p>
       </div>
+ </div> 
+ 
+ <div class="row">
+  <div class="container">  
+  <div class="one">
+  <div class="jumbotron text-center col-xl-6">
+    <!-- <div class=col-md-6> -->
+      <h2><small>Probeer het zelf!</small></h2>
+      <p><small>Prompt het model met 1 of twee zinnen:</small></p>
+        
+      <!-- <div class="container"> -->
+        <div class=><label for="fname">input:</label></div>
+        <div class=><input type="text" id="prompt" name="prompt", maxlength="100"><br><br></div>
+      
+      <div><button type="button" onclick="generate_text()">Genereer tekst!</button></div>
+    <!-- </div> -->
+  </div>
+</div>
+<div class="two">
+    <div class="jumbotron text-center col-xl-6">
+        <div class="card">
+          <div><p id="output">Hier verschijnt de output van de AI</p></div>
+          <script src="/socket.io/socket.io.js"></script>
+          <script src="/index.js"></script>
+        </div>  
+ </div>
 
-      <div class="container _cream"style="min-height:350px">
-        <div class="off-4"><label for="fname">input:</label></div>
-        <div class="off-4"><input type="text" id="prompt" name="prompt", maxlength="100"><br><br></div>
-    
-      <div class="off-4"><button type="button" onclick="generate_text()">Generate text!</button></div>
+</div>
+    </div> 
+  </div>
+  <div class="container">
+  <div class="panel panel-default">
+    <p style= font-size:8px >Belangrijk! Deze applicatie is bedoeld als demonstratie van een educatief project met AI en is nog niet af.
+      Het is de bedoeling dat de gebruiker de tekst gebruikt als inspiratie. De tekst 1 op 1 overnemen is niet verstandig.
+      Wij zijn geenszins aansprakelijk voor de output van deze AI.
+      Je bent zelf verantwoordelijk voor het scheppen, gebruiken en uitbrengen van een eigen creatie op basis van deze tekst.
+      Controleer je tekst altijd op plagiaat met bestaande auteursrechtbeschermde werken.
+      Wij zijn niet verantwoordelijk of aansprakelijk voor het onverhoopt genereren van autersrechtelijk beschermd materiaal:
+      dit wordt namelijk gegenereerd door een vorm van AI. Tijdens de training hebben wij ons best gedaan om dit niet te laten gebeuren,
+      maar AI is niet altijd controleerbaar. Please handle with care! :)</p>
+    </div>
+  </div>
 
-    </div>
-    <div class="container _nightblue"style="min-height:350px">
-      <div class="off-2"><p id="output">Here the output will be shown</p></div>
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="/index.js"></script>
-    </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

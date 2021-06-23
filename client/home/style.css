@@ -1,0 +1,63 @@
+
+.zero .jumbotron {
+    animation: transitionIn 1s;
+    width: auto;
+    height:fit-content;
+}
+
+.one .jumbotron
+{ 
+animation: transitionIn 8s;
+color:rgb(0, 0, 0);
+text-align: center;
+padding-top: 10;
+height: 500px;
+width: 500px;
+min-width: 100%;
+border-radius: 10;
+}
+
+.two .jumbotron
+{ color:rgb(0, 0, 0);
+animation: transitionIn 8s;
+padding-top: 10;
+height: 500px;
+width: 500px;
+min-width: 100%;
+border-radius: 10;
+}
+
+.card
+{ color:rgb(0, 0, 0);
+
+    padding-top: 5;
+    height: 400px;
+    width: 400px;
+    min-width: 45%;
+    border-radius: 1,5;
+    }
+
+.container
+{
+    animation: transitionIn 1s;
+    display: flex;
+    }
+
+.panel
+{
+    animation: transitionIn 3s;
+    height: auto;
+}
+
+
+@keyframes transitionIn {
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(0)
+    }
+}
