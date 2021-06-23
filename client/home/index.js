@@ -1,7 +1,9 @@
 var socket = io();
 
+
 function generate_text(){
     socket.emit('generated_text', document.getElementById("prompt").value);
+    
 }
 
 function login(){

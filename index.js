@@ -64,6 +64,11 @@ app.get('/index.js', function(req, res) {
     res.sendFile(__dirname + '/client/user_page/index.js');
 });
 
+app.get('/style.css', function(req, res) {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(__dirname + '/client/home/style.css');
+});
+
 io.sockets.setMaxListeners(0);
 
 io.on('connection', function(socket){

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 	<link rel="stylesheet" type="text/css" href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   </head>
      <script src= "https://rawgit.com/outboxcraft/beauter/master/beauter.min.js"></script>
@@ -20,7 +21,7 @@
 <div class="container">
   <div class="panel panel-default">
       <h2>Hee! Leuk dat je Lyre wilt testen! </h2>
-      <p>Lyre is een gefinetunede versie van OpenAI's GPT2, getraind op korte verhalen en songteksten.</p>
+      <p>Lyre is een gefinetunede versie van OpenAI's GPT2, getraind op engelstalige korte verhalen en songteksten.</p>
       <p><small>Lyre is een educatief project van afstudeerders van HKU Muziek en Technologie om te leren over werken en interacteren met AI modellen in creatieve context. Door eerdere tests met een oudere alpha-versie met drie producers is ontdekt dat er wellicht een rol in het creatieve proces is voor een suboptimaal getraind netwerk. Hiermee wordt de creativiteit van de maker mogelijk vergroot.  </small></p>
       </div>
  </div> 
@@ -31,14 +32,23 @@
   <div class="jumbotron text-center col-xl-6">
     <!-- <div class=col-md-6> -->
       <h2><small>Probeer het zelf!</small></h2>
-      <p><small>Prompt het model met 1 of twee zinnen:</small></p>
+      <p><small>Prompt het model met 1 of 2 engelse zinnen:</small></p>
         
       <!-- <div class="container"> -->
         <div class=><label for="fname">input:</label></div>
         <div class=><input type="text" id="prompt" name="prompt", maxlength="100"><br><br></div>
       
-      <div><button type="button" onclick="generate_text()">Genereer tekst!</button></div>
+      <div><button type="button" onclick="move(),printmessage(),generate_text()">Genereer tekst!</button></div>
     <!-- </div> -->
+    <br>
+    <div style="max-width: 30%; margin: auto;">
+    <div class="w3-light-grey">
+      <div id="myBar" class="w3-blue" style="height:24px;width:0"></div>
+    </div>
+    </div>
+    <br>
+  
+    
   </div>
 </div>
 <div class="two">
@@ -55,7 +65,7 @@
   </div>
   <div class="container">
   <div class="panel panel-default">
-    <p style= font-size:8px >Belangrijk! Deze applicatie is bedoeld als demonstratie van een educatief project met AI en is nog niet af.
+    <p style= font-size:11px >Belangrijk! Deze applicatie is bedoeld als demonstratie van een educatief project met AI en is nog niet af.
       Het is de bedoeling dat de gebruiker de tekst gebruikt als inspiratie. De tekst 1 op 1 overnemen is niet verstandig.
       Wij zijn geenszins aansprakelijk voor de output van deze AI.
       Je bent zelf verantwoordelijk voor het scheppen, gebruiken en uitbrengen van een eigen creatie op basis van deze tekst.
@@ -69,5 +79,24 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+  function printmessage() 
+  {document.getElementById("output").innerHTML = "Sent! Even geduld! <br>Denk alvast aan je volgende zin!";
+}
+  function move() {
+    var elem = document.getElementById("myBar");   
+    var width = 1;
+    var id = setInterval(frame, 1000);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+      }
+    }
+  }
+  </script>
   </body>
 </html>
