@@ -10,7 +10,7 @@ const osc = require('node-osc');
 
 var clients = {};
 var receivers = {};
-var ip_address = '127.0.0.1';
+var ip_address = '94.209.127.56';
 var message_queue = [];
 var python = new osc.Client("127.0.0.1",5001);
 //43280
@@ -61,7 +61,7 @@ app.get('/home', function(request, response) {
 
 app.get('/index.js', function(req, res) {
     res.setHeader('Content-Type', 'application/javascript');
-    res.sendFile(__dirname + '/client/user_page/index.js');
+    res.sendFile(__dirname + '/client/home/index.js');
 });
 
 app.get('/style.css', function(req, res) {
